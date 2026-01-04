@@ -1,11 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-const initialState = {
+// Helper to save state to localStorage
+const saveToLocalStorage = (state) => {
+  localStorage.setItem("cart", JSON.stringify(state));
+};
+
+const initialState = JSON.parse(localStorage.getItem("cart")) || {
   products: [],
   selectedItems: 0,
   totalPrice: 0,
 };
+
+
 const calculateCartTotals = (products) => {
   const selectedItems = products.reduce(
     (total, product) => total + product.quantity,
@@ -37,6 +44,9 @@ export const cartSlice = createSlice({
       const totals = calculateCartTotals(state.products);
       state.selectedItems = totals.selectedItems;
       state.totalPrice = totals.totalPrice;
+
+      // add local storage sync
+      saveToLocalStorage(state);
     },
     quantityUpdate: (state, action) => {
       const product = state.products.find(
@@ -55,6 +65,9 @@ export const cartSlice = createSlice({
       const totals = calculateCartTotals(state.products);
       state.selectedItems = totals.selectedItems;
       state.totalPrice = totals.totalPrice;
+
+      // add local storage sync
+      saveToLocalStorage(state);
     },
     removeFromCart: (state, action) => {
       state.products = state.products.filter(
@@ -63,9 +76,15 @@ export const cartSlice = createSlice({
       const totals = calculateCartTotals(state.products);
       state.selectedItems = totals.selectedItems;
       state.totalPrice = totals.totalPrice;
+
+      // add local storage sync
+      saveToLocalStorage(state);
     },
     clearCart: (state) => {
         Object.assign(state, initialState);
+
+        // add local storage sync
+        saveToLocalStorage(state);
     }
   },
 });
