@@ -6,6 +6,9 @@ import Reviews from "./review.model.js";
 const createReview = async (req, res) => {
     try {
         const {comment, rating, userId, productId} = req.body;
+        if(!userId){
+            return errorResponse(res, 403, "Unauthorized access");
+        }
         if(!comment || rating === undefined || !userId || !productId){
             return errorResponse(res, 400, "Missing required fields");
         }

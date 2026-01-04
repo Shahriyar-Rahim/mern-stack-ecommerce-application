@@ -6,7 +6,7 @@ import { createReview, getTotalReviews, getUsersReviews } from "./review.control
 const router = express.Router();
 
 // post review
-router.post('/create-review', verifyToken, createReview);
+router.post('/create-review', createReview); //add token verify
 
 // review counts
 router.get('/total-reviews', getTotalReviews);
