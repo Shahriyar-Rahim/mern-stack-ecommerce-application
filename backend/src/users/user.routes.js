@@ -32,6 +32,6 @@ router.delete("/users/:id", verifyToken, verifyAdmin, deleteUser);
 router.put("/users/:id", verifyToken, verifyAdmin, updateUserRole);
 
 // edit user profile
-router.patch("/edit-profile/:id", verifyToken, editUserProfile);
+router.patch("/edit-profile/:id", editUserProfile);
 
 export default router;

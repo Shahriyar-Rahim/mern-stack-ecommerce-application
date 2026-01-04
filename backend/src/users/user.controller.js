@@ -144,6 +144,7 @@ const updateUserRole = async (req, res) => {
 const editUserProfile = async (req, res) => {
   const { id } = req.params;
   const { username, profileImage, bio, profession } = req.body;
+  if(!id) return errorResponse(res, 400, "Invalid or missing User ID");
   try {
     const updateField = { username, profileImage, bio, profession };
     const updateUser = await User.findByIdAndUpdate(id, updateField, {
