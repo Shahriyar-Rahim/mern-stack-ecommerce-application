@@ -1,3 +1,3 @@
-const baseUrl = "http://localhost:5173";
+const baseUrl = "https://mern-stack-ecommerce-application.vercel.app";
 
 export default baseUrl;
