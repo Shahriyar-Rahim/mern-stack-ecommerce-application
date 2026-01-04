@@ -1,0 +1,16 @@
+Step-1: Create a user model
+1. username
+2. email
+3. password
+4. profile image
+5. bio
+6. profession
+7. role
+8. createdAt
+
+Step-2: Creeate routes
+get: when get info from database
+post: to post info from frontend pr client to database
+put: to edit or update info from database(full data)
+patch: to partially update the data
+delete: to delete infro from database
