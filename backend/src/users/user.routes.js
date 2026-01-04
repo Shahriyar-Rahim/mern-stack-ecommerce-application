@@ -8,7 +8,6 @@ import {
   userLogout,
   userRegistration,
 } from "./user.controller.js";
-import { get } from "mongoose";
 import verifyToken from "../middleware/verifyToken.js";
 import verifyAdmin from "../middleware/verifyAdmin.js";
 

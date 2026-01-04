@@ -44,6 +44,7 @@ const userLoggedIn = async (req, res) => {
     }
 
     const token = await generateTocken(user._id);
+    console.log(token)
     res.cookie("token", token, {
       httpOnly: true,
       secure: true, // Must be true for HTTPS (Vercel)
@@ -94,6 +95,10 @@ const userLogout = async (req, res) => {
 // get all users
 const getAllUsers = async (req, res) => {
   try {
+    const admin = req.user.role === "admin";
+    if (!admin) {
+      return errorResponse(res, 403, "Unauthorized access");
+    }
     const users = await User.find({}, "email role").sort({ createdAt: -1 });
     successResponse(res, 200, "Successfully got all users", users);
   } catch (error) {

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../redux/features/cart/cartSlice";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 // import { loadStripe } from '@stripe/stripe-js';
 import { getBaseUrl } from "../../utils/getBaseUrl";
 import axios from "axios";
@@ -58,8 +58,12 @@ const OrderSummary = () => {
     try {
       const body = {
         products: products,
-        userId: user?._id,
+        userId: user?._id
       };
+      if(!user){
+          Swal.fire("Please login to access this page");
+          return <Navigate to="/login" state={{from: location}} replace/>;
+        }
       const response = await axios.post(
         `${getBaseUrl()}/api/orders/create-checkout-session`,
         body,

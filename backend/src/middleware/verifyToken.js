@@ -6,7 +6,9 @@ import jwt from "jsonwebtoken";
 
 const verifyToken = (req, res, next) => {
     try {
-        const token = req.cookies.token; //TODO: ensure token after postman checking and uncomment this
+        const token = req.cookies.token;
+        console.log(token)
+        //TODO: ensure token after postman checking and uncomment this
         // const token = req.headers.authorization?.split(" ")[1]; //this is for postman
         // console.log("Token from cookies: ", token);
         

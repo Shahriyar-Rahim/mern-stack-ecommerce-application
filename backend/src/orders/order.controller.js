@@ -8,6 +8,10 @@ const stripeClient = new Stripe(process.env.STRIPE_SECRET_KEY);
 const makePaymentRequest = async (req, res) => {
   const { products, userId } = req.body;
 
+  if(!products || !userId) {
+    return errorResponse(res, 400, "Missing required fields");
+  }
+
   try {
     const lineItems = products.map((product) => ({
       price_data: {

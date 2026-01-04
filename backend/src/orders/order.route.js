@@ -1,5 +1,7 @@
 import express from "express";
 import { confirmPaymentRequest, deleteOrderById, getAllOrders, getOrdersByEmail, getOrdersByOrderId, makePaymentRequest, updateOrderStatus } from "./order.controller.js";
+import verifyAdmin from "../middleware/verifyAdmin.js";
+import verifyToken from "../middleware/verifyToken.js";
 
 const router = express.Router();
 
@@ -16,13 +18,13 @@ router.get('/:email', getOrdersByEmail);
 router.get('/order/:id', getOrdersByOrderId);
 
 // get all orders only admin
-router.get("/", getAllOrders);
+router.get("/", verifyToken ,verifyAdmin,  getAllOrders);
 
 // update order status admin only
-router.patch('/update-order-status/:id', updateOrderStatus);
+router.patch('/update-order-status/:id', verifyToken ,verifyAdmin, updateOrderStatus);
 
 // delete order admin only
-router.delete('/delete-order/:id', deleteOrderById);
+router.delete('/delete-order/:id', verifyToken ,verifyAdmin ,deleteOrderById);
 
 
 export default router;

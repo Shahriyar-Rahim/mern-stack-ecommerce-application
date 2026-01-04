@@ -46,7 +46,7 @@ const authApi = createApi({
         method: "GET",
       }),
       refetchOnMount: true,
-      providesTags: ["User"], //previous invalidatesTags
+      invalidatesTags: ["User"], //previous is providedtags
     }),
     deleteUser: builder.mutation({
       query: (userId) => ({
