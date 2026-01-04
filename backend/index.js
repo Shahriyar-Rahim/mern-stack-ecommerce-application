@@ -4,6 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
+import baseUrl from "./src/utils/baseUrl.js";
 
 // env
 dotenv.config();
@@ -16,7 +17,7 @@ const app = express();
 app.use(express.json({ limit: '25mb' }));
 app.use(cors(
   {
-    origin: `${baseUrl}`,
+    origin: baseUrl,
     credentials: true,
   }
 ));
@@ -34,7 +35,6 @@ import orderRoutes from "./src/orders/order.route.js"
 import statsRoutes from "./src/stats/stats.route.js"
 import { UploadImage } from "./src/utils/uploadImage.js";
 import { errorResponse, successResponse } from "./src/utils/responseHandler.js";
-import baseUrl from "./src/utils/baseUrl.js";
 
 // routes
 app.use("/api/auth", userRoutes);
