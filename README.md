@@ -2,10 +2,6 @@
 
 ![Website Screenshot](./public/screenshot.png)
 
-> Replace the image above with a screenshot of your site:
-> - Add a file at `public/screenshot.png` (or `docs/screenshot.png`) and this will render here.
-> - Or replace the path with your hosted screenshot URL, e.g. `https://example.com/screenshot.png`.
-
 [![version](https://img.shields.io/badge/version-1.0.0-blue)]()
 [![license](https://img.shields.io/badge/license-MIT-green)]()
 [![built with](https://img.shields.io/badge/built%20with-MERN-orange)]()
@@ -265,7 +261,3 @@ Quick Tips (replace placeholders)
 - Add any CI/CD instructions (GitHub Actions) if you use them
 
 ---
-Made with care — customize this README to reflect your repo's exact structure (folders may be `client/` and `server/` or `frontend/` and `backend/`) and added scripts. If you want, I can:
-- generate a ready-to-commit README.md with exact commands from your package.json,
-- add Docker compose example,
-- or create CONTRIBUTING.md and templates next.
