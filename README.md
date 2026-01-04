@@ -246,7 +246,7 @@ This project is open-source and available under the MIT License. See LICENSE for
 
 Contact
 -------
-- Maintainer: Your Name — [your-email@example.com]
+- Maintainer: Shahriyar Rahim
 - GitHub: [Shahriyar-Rahim](https://github.com/Shahriyar-Rahim)
 
 Acknowledgements
